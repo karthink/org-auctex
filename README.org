@@ -1,0 +1,14 @@
+#+title: Fast latex previews in Org
+
+https://user-images.githubusercontent.com/8607532/155931750-c53b0079-3e9a-4b7b-b3fb-4174aa45b150.mp4
+
+Needs testing!
+
+Requires auctex/preview-latex.
+
+To use, turn on =org-auctex-mode= in an org buffer. This replaces your binding for =org-latex-preview= (~C-c C-x C-l~ by default) with =org-auctex-preview-dwim=.
+
+=org-auctex-preview-dwim= is a drop-in replacement for =org-latex-preview= (including the prefix argument behavior).
+
+If you prefer more fine grained control, there are other commands for previewing at point, the section, buffer etc.
+
