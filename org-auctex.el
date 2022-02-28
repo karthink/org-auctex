@@ -124,8 +124,19 @@ It returns the started process."
                                      dumped-cons master
                                      geometry))))
 
-;; Preview Commands
+(defun org-auctex-sanitize (buf beg end)
+  "Sanitize Org markup for Latex compilation.
 
+Text in buffer BUF from BEG to END is sanitized and returned as a
+string."
+  (with-temp-buffer
+    (insert-buffer-substring-no-properties buf beg end)
+    (goto-char (point-min))
+    (while (search-forward-regexp "^#\\+" nil t)
+      (replace-match "% #+"))
+    (buffer-string)))
+
+;; Preview Commands
 (defun org-auctex-preview-region (beg end)
   "Run preview on region between BEG and END."
   (interactive "r")
@@ -144,7 +155,7 @@ It returns the started process."
 	      'snippet)))
         (latex-trailer "\n\\end{document}\n")
         (region-file (TeX-region-file TeX-default-extension))
-        (latex-content (buffer-substring-no-properties beg end)))
+        (latex-content (org-auctex-sanitize (current-buffer) beg end)))
     (org-auctex-region-create
      region-file
      latex-header
