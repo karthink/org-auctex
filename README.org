@@ -11,4 +11,13 @@ To use, turn on =org-auctex-mode= in an org buffer. This replaces your binding f
 =org-auctex-preview-dwim= is a drop-in replacement for =org-latex-preview= (including the prefix argument behavior).
 
 If you prefer more fine grained control, there are other commands for previewing at point, the section, buffer etc.
-
+* Planned
+- [ ] Support for non-file buffers
+- [ ] Support for multiple files at once (it uses a single tex file)
+- [ ] Better caching (it currently always regenerates)
+- [ ] =dvisvgm= support
+- [ ] Better integration with the org-element API
+- [ ] Agnostic backend for use in any file, not just org
+- [ ] Better keybindings (rebind =C-c C-l=)
+- [X] Basic Tests
+- [ ] Per-element tests
