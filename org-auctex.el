@@ -154,6 +154,7 @@ string."
 	      org-format-latex-header
 	      'snippet)))
         (latex-trailer "\n\\end{document}\n")
+        ;; (TeX-region (concat "_region_" (file-name-base (buffer-file-name))))
         (region-file (TeX-region-file TeX-default-extension))
         (latex-content (org-auctex-sanitize (current-buffer) beg end)))
     (org-auctex-region-create
@@ -171,6 +172,11 @@ string."
                              (point))))))
   (setq TeX-current-process-region-p t)
   (org-auctex-generate-preview (TeX-region-file)
+                               ;; TODO Fix it so preview-start-pdf2dsc,
+                               ;; preview-start-* use the correct value of
+                               ;; TeX-region, maybe by setting it temporarily.
+                               ;; Let bindings won't work since these
+                               ;; functions are called by sentinels
                                (preview-do-replacements
                                 (TeX-command-expand
                                  (preview-string-expand preview-LaTeX-command))
